@@ -1,0 +1,50 @@
+﻿@model IEnumerable<CBA.Core.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" id="dataTable">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerLongID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerLongID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+            <td>
+                <a asp-controller="customeraccount" asp-action="CreateSavings" asp-route-id="@item.ID" class="btn btn-primary">CreateSavings</a>
+            </td>
+            <td> <a asp-controller="customeraccount" asp-action="Create" asp-route-id="@item.ID" class="btn btn-primary">Create Account</a></td>
+            <td>
+                <a asp-controller="customeraccount" asp-action="CreateLoan" class="btn btn-primary">CreateLoan</a>
+            </td>
+        </tr>
+    }
+
+</table>

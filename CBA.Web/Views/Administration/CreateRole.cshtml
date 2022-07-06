@@ -1,0 +1,32 @@
+﻿@model CBA.Core.Models.CreateRole
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group row">
+                    <h2 class="text-black-50 pl-3">Create New User</h2> 
+                </div>
+                <div class="form-group">
+                    <label asp-for="RoleName"></label>
+                    <input type="text" asp-for="RoleName" class="form-control" >
+                    <span asp-validation-for="RoleName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Status"></label>
+                    <br/>
+                    <select asp-for="Status" asp-items="Html.GetEnumSelectList<Status>()"></select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="col-sm-10">
+                    @*<a asp-controller="Role" class="btn btn-primary w-25">Register</a>*@
+                    <button style="width:auto" type="submit" class="btn btn-primary">Create Role</button>
+                </div>
+         </form>
+    </div>
+</div>
+
+@section Scripts{
+    @{ <partial name="_ValidationScriptsPartial" />}
+}

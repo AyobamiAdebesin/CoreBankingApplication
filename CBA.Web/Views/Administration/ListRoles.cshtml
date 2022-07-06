@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ApplicationRole>
+
+@{
+    ViewBag.Title = "All Roles";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">List of Roles</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="administration" asp-action="CreateRole" class="btn btn-primary mb-3" style="width:auto">Add New Role</a>
+        </div>
+    </div>
+    <br />
+</div>
+
+    @if(Model.Count() > 0)
+    {
+        <table  class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Changes
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var role in Model)
+                {
+                    <tr>
+                       <td width="30%">@role.Name</td>
+                       <td width="30%">@role.State</td>
+                       <td width="40%">
+                           <div class="w-100 btn-group" role="group">
+                               <a class="btn btn-primary mx-1 w-50" asp-action="EditRole" asp-controller="Administration" asp-route-id="@role.Id">Edit</a>
+                               <a asp-action="EditUsersInRole" asp-controller="Administration" asp-route-roleId="@role.Id" class="btn btn-primary mx-1 w-50" style="width:auto">Manage Claims</a>
+                           </div>
+                       </td>
+                   </tr>
+                }
+             </tbody>
+        </table>
+    }
+else
+{
+    <div class="card">
+        <div class="card-header">
+            No roles created yet
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">
+                Use the button below to create a role
+            </h5>
+            <a class="btn btn-primary" style="width:auto"
+               asp-controller="administration" asp-action="CreateRole">
+                Create Role
+            </a>
+        </div>
+    </div>
+}

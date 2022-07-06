@@ -1,0 +1,76 @@
+﻿@model IEnumerable<CBA.Core.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "All Users";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">List of Users</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="Account" asp-action="Register" class="btn btn-primary mb-3" style="width:auto">Add New User</a>
+        </div>
+    </div>
+    <br />
+</div>
+
+@if(Model.Count() > 0)
+{
+    <table  class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Email
+                </th>
+                <th>
+                    First Name
+                </th>
+                <th>
+                    LastName
+                </th>
+                <th>
+                    Gender
+                </th>
+                <th>
+                    Status
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td width="16%">@user.Email</td>
+                    <td width="16%">@user.FirstName</td>
+                    <td width="16%">@user.LastName</td>
+                    <td width="16%">@user.Gender</td>
+                    <td width="16%">@user.Status</td>
+                    <td width="16%">
+                        <div class="w-100 btn-group" role="group">
+                            <a asp-action="EditUser" asp-controller="Administration" asp-route-id="@user.Id" class="btn btn-primary">Edit</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+            </tbody>
+    </table>
+   }
+else
+{
+    <div class="card">
+        <div class="card-header">
+            No users created yet
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">
+                Use the button below to create a user
+            </h5>
+            <a class="btn btn-primary" style="width:auto"
+               asp-controller="Account" asp-action="Register">
+                Add new user
+            </a>
+        </div>
+    </div>
+}
