@@ -4,6 +4,7 @@ using CBA.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CBA.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220718120615_TransactionCustomerAccount")]
+    partial class TransactionCustomerAccount
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -121,8 +123,8 @@ namespace CBA.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5b5311b7-5828-4cdc-af46-c9737e2386ef",
-                            ConcurrencyStamp = "565d8756-0696-407a-8c7b-bc74811ee9e0",
+                            Id = "0168882b-d81a-4fb1-bca6-9e393a4e536c",
+                            ConcurrencyStamp = "dce146d4-8373-4dc6-a349-35dec0218859",
                             Name = "Super Admin",
                             State = 0
                         });
@@ -208,9 +210,9 @@ namespace CBA.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b6e9f4b6-f7e7-4fbe-9302-f85ca272261a",
+                            Id = "1674d5e0-850c-4f12-8b1c-f929cd982b1c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e696c02e-0464-4e46-9f58-a85698dab848",
+                            ConcurrencyStamp = "6a66cff0-3107-4fed-9dbd-c21ad149c136",
                             Email = "bolexcoded43@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Boluwatife",
@@ -218,7 +220,7 @@ namespace CBA.DAL.Migrations
                             LastName = "Oyetoro",
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a1bd11dd-767e-495d-94ab-a2ab389d7ad9",
+                            SecurityStamp = "e51987e4-f5cd-4082-b7f9-007843423e15",
                             Status = 0,
                             TwoFactorEnabled = false
                         });
@@ -676,11 +678,11 @@ namespace CBA.DAL.Migrations
                     b.Property<string>("AccountName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("AccountNumber")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<double>("Amount")
                         .HasColumnType("float");
+
+                    b.Property<int?>("CustomerAccountID")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -691,9 +693,6 @@ namespace CBA.DAL.Migrations
                     b.Property<int>("MainCategory")
                         .HasColumnType("int");
 
-                    b.Property<string>("Narration")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("SubCategory")
                         .HasColumnType("nvarchar(max)");
 
@@ -701,6 +700,8 @@ namespace CBA.DAL.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("CustomerAccountID");
 
                     b.ToTable("Transactions");
                 });
@@ -948,6 +949,15 @@ namespace CBA.DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("GlAccount");
+                });
+
+            modelBuilder.Entity("CBA.Core.Models.Transaction", b =>
+                {
+                    b.HasOne("CBA.Core.Models.CustomerAccount", "CustomerAccount")
+                        .WithMany()
+                        .HasForeignKey("CustomerAccountID");
+
+                    b.Navigation("CustomerAccount");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

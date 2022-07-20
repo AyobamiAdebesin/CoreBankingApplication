@@ -4,6 +4,7 @@ using CBA.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CBA.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220707145637_InitialMigration")]
+    partial class InitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -121,8 +123,8 @@ namespace CBA.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5b5311b7-5828-4cdc-af46-c9737e2386ef",
-                            ConcurrencyStamp = "565d8756-0696-407a-8c7b-bc74811ee9e0",
+                            Id = "0419ac73-a110-4f13-911c-e512d2073285",
+                            ConcurrencyStamp = "2ddfe3c6-2bc9-49db-b0e1-0888fea4481e",
                             Name = "Super Admin",
                             State = 0
                         });
@@ -208,9 +210,9 @@ namespace CBA.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b6e9f4b6-f7e7-4fbe-9302-f85ca272261a",
+                            Id = "ddae8b4e-89bd-4f13-bf85-369b7ea5a649",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e696c02e-0464-4e46-9f58-a85698dab848",
+                            ConcurrencyStamp = "7d999f5f-6be7-4ad9-bbc0-611e14cb856d",
                             Email = "bolexcoded43@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Boluwatife",
@@ -218,7 +220,7 @@ namespace CBA.DAL.Migrations
                             LastName = "Oyetoro",
                             LockoutEnabled = false,
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a1bd11dd-767e-495d-94ab-a2ab389d7ad9",
+                            SecurityStamp = "dac16ace-6553-4560-b84b-0343f9b588a4",
                             Status = 0,
                             TwoFactorEnabled = false
                         });
@@ -676,23 +678,14 @@ namespace CBA.DAL.Migrations
                     b.Property<string>("AccountName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("AccountNumber")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<double>("Amount")
                         .HasColumnType("float");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("FinancialDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("MainCategory")
                         .HasColumnType("int");
-
-                    b.Property<string>("Narration")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SubCategory")
                         .HasColumnType("nvarchar(max)");

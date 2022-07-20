@@ -358,7 +358,7 @@ namespace CBA.Services.Settings
                 switch (glMainCategory)     //these codes are assumed at author's descretion
                 {
                     case MainGLCategory.Asset:
-                        code = 10001020;
+                        code = 10001020; // Append a customer id to replace 020
                         break;
                     case MainGLCategory.Capital:
                         code = 30001020;
@@ -603,6 +603,11 @@ namespace CBA.Services.Settings
             return output;
         }
 
+        public bool SaveTransactions(decimal amount, string debitaccountnumber, string creditaccountnumber)
+        {
+            throw new NotImplementedException();    
+        }
+
         public async Task SendEmailAsync(MailRequest mailRequest)
         {
             var email = new MimeMessage();
@@ -624,6 +629,7 @@ namespace CBA.Services.Settings
             throw new NotImplementedException();
         }
     }
+
 
     public static class AccountTypes
     {

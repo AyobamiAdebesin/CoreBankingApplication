@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace CBA.Web.Controllers
 {
-   [Authorize (Roles = "Admin")]
+    //[Authorize (Roles = "Admin")]
     public class AdministrationController : Controller
     {
         private readonly RoleManager<ApplicationRole> roleManager;

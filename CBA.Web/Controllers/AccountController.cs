@@ -29,14 +29,14 @@ namespace CBA.Web.Controllers
             this.mailService = mailService;
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Register(Register model)
         {

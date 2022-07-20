@@ -12,9 +12,12 @@ namespace CBA.Core.Models
         public int ID { get; set; }
         public double Amount { get; set; }
         public DateTime Date { get; set; }
+        public DateTime FinancialDate { get; set; }
         public string AccountName { get; set; }
         public string SubCategory { get; set; }
         public MainGLCategory MainCategory { get; set; }
         public TransactionType TransactionType { get; set; }
+        public string AccountNumber { get; set; }
+        public string Narration { get; set; }
     }
 }

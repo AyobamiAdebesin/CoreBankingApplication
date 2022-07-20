@@ -18,6 +18,7 @@ namespace CBA.Services.Settings
         void ComputeReducingRepayment(CustomerAccount act, double nyears, double interestRate);
         bool CheckIfAccountBalanceIsEnough(CustomerAccount account, double amountToDebit);
         string GenerateCustomerLongId();
+        bool SaveTransactions(decimal amount, string debitaccountnumber, string creditaccountnumber);
         bool IsConfigurationSet();
         bool CreditCustomerAccount(CustomerAccount customerAccount, double amount);
         bool DebitCustomerAccount(CustomerAccount customerAccount, double amount);

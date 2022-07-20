@@ -16,6 +16,7 @@ namespace CBA.Core.Models
         public string AccountName { get; set; }
 
         [Display(Name = "GL Account Code")]
+        //string
         public long AccountCode { get; set; }
         public Categories Categories { get; set; }
 
